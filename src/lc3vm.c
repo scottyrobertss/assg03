@@ -1,10 +1,10 @@
 /** @file lc3vm.c
  * @brief LC-3 VM Implementation
  *
- * @author Student Name
- * @note   cwid: 123456
- * @date   Spring 2024
- * @note   ide:  g++ 8.2.0 / GNU Make 4.2.1
+ * @author Jeffrey Roberts
+ * @note   cwid: 50381513
+ * @date   Spring 2026
+ * @note   ide:  g++ 13.3.0
  *
  * Implementation of LC-3 VM/Microarchitecture simulator.  Functions
  * to fetch-decode-execute LC-3 encoded machine instructions.
@@ -48,9 +48,6 @@ uint16_t PC_START = 0x3000;
 uint16_t mem_read(uint16_t addr)
 { return mem[addr]; }
 
-void mem_write(uint16_t addr, uint16_t val)
-{ mem[addr] = val; }
-
 /** @brief memory write, transfer to memory
  *
  * Given a 16 bit address and a 16 bit value, store the value in our
@@ -67,6 +64,9 @@ void mem_write(uint16_t addr, uint16_t val)
  *   character, or some other type of data.
  */
 // put your implememtation of mem_write() here below it documentation
+
+void mem_write(uint16_t addr, uint16_t val)
+{ mem[addr] = val; }
 
 /** @brief sign extend bits
  *
@@ -92,6 +92,19 @@ void mem_write(uint16_t addr, uint16_t val)
  *    value.
  */
 // put your implememtation of sign_extend() here below it documentation
+
+uint16_t sign_extend(uint16_t bits, int size)
+{
+  if ((bits >> (size - 1)) & 1)
+  {
+    bits |= (0xFFFF << size);
+  }
+  else
+  {
+    bits &= (0xFFFF >> (16 - size));
+  }
+  return bits;
+}
 
 /** @brief update condition register flags
  *

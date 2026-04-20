@@ -1,10 +1,10 @@
 /** @file assg03-tests.cpp
  * @brief Unit tests for LC-3 microarchitecture/VM simulator.
  *
- * @author Student Name
- * @note   cwid: 123456
- * @date   Spring 2024
- * @note   ide:  VS Code Editor / IDE ; g++ 8.2.0 / GNU Make 4.2.1
+ * @author Jeffrey Roberts
+ * @note   cwid: 50381513
+ * @date   Spring 2026
+ * @note   ide:  g++ 13.3.0
  *
  * Unit tests for assignment 03, implementaiton of LC-3
  * microarchitecture/VM simulator.
@@ -16,7 +16,7 @@
 #include "lc3vm_dbg.h"
 
 #define task1
-#undef task2
+#define task2
 #undef task3
 #undef task4
 #undef task5
