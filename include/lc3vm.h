@@ -94,6 +94,10 @@ void st(uint16_t i);
 void sti(uint16_t i);
 void str(uint16_t i);
 
+void jmp(uint16_t i);
+void br(uint16_t i);
+void jsr(uint16_t i);
+
 void rti(uint16_t i);
 void res(uint16_t i);
 void tgetc();
