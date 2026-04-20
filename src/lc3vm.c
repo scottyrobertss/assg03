@@ -64,7 +64,6 @@ uint16_t mem_read(uint16_t addr)
  *   character, or some other type of data.
  */
 // put your implememtation of mem_write() here below it documentation
-
 void mem_write(uint16_t addr, uint16_t val)
 { mem[addr] = val; }
 
@@ -92,7 +91,6 @@ void mem_write(uint16_t addr, uint16_t val)
  *    value.
  */
 // put your implememtation of sign_extend() here below it documentation
-
 uint16_t sign_extend(uint16_t bits, int size)
 {
   if ((bits >> (size - 1)) & 1)
@@ -156,6 +154,14 @@ void update_flags(enum registr r)
  *   instruction.
  */
 // put your implememtation of add() here below it documentation
+void add(uint16_t i)
+{
+  if (FIMM(i))
+    reg[DR(i)] = reg[SR1(i)] + SEXTIMM(i);
+  else
+    reg[DR(i)] = reg[SR1(i)] + reg[SR2(i)];
+  update_flags(DR(i));
+}
 
 /** @brief logical AND operation
  *
@@ -177,6 +183,14 @@ void update_flags(enum registr r)
  *   instruction.
  */
 // put your implememtation of andlc() here below it documentation
+void andlc(uint16_t i)
+{
+  if (FIMM(i))
+    reg[DR(i)] = reg[SR1(i)] & SEXTIMM(i);
+  else
+    reg[DR(i)] = reg[SR1(i)] & reg[SR2(i)];
+  update_flags(DR(i));
+}
 
 /** @brief logical NOT operation
  *
@@ -191,6 +205,11 @@ void update_flags(enum registr r)
  *   instruction.
  */
 // put your implememtation of notlc() here below it documentation
+void notlc(uint16_t i)
+{
+  reg[DR(i)] = ~reg[SR1(i)];
+  update_flags(DR(i));
+}
 
 /** @brief load RPC + offset
  *
