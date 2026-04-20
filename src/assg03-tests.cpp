@@ -15,7 +15,7 @@
 #include "lc3vm.h"
 #include "lc3vm_dbg.h"
 
-#undef task1
+#define task1
 #undef task2
 #undef task3
 #undef task4
@@ -145,24 +145,16 @@ TEST_CASE("Task 3: DR destination register extraction operations", "[task3]")
 }
 
 TEST_CASE("Task 3: SEXTIMM immediate operand extraction and sign extension", "[task3]")
-{
-  CHECK(SEXTIMM(add_ins) == 0x0003);
-}
+{ CHECK(SEXTIMM(add_ins) == 0x0003); }
 
 TEST_CASE("Task 3: OFF6 immediate operand extraction and sign extension", "[task3]")
-{
-  CHECK(OFF6(str_ins) == 0x001F);
-}
+{ CHECK(OFF6(str_ins) == 0x001F); }
 
 TEST_CASE("Task 3: PCOFF9 immediate operand extraction and sign extension", "[task3]")
-{
-  CHECK(PCOFF9(ld_ins) == 0xFF0F);
-}
+{ CHECK(PCOFF9(ld_ins) == 0xFF0F); }
 
 TEST_CASE("Task 3: PCOFF11 immediate operand extraction and sign extension", "[task3]")
-{
-  CHECK(PCOFF11(jsr_ins) == 0xFC55);
-}
+{ CHECK(PCOFF11(jsr_ins) == 0xFC55); }
 #endif // task3
 
 /**
